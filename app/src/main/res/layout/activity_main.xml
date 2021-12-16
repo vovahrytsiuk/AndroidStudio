@@ -7,71 +7,33 @@
     tools:context=".MainActivity">
 
 
-    <TextView
-        android:id="@+id/hellotext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Enter Password"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/okbutton" />
     <Button
-        android:id="@+id/okbutton"
+        android:id="@+id/bSignInFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ok"
-        app:layout_constraintBottom_toTopOf="@id/hellotext"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/passwordModeRadioGroup"
-        app:layout_constraintRight_toRightOf="parent"
-        />
-    <RadioGroup
-        android:id="@+id/passwordModeRadioGroup"
+        android:text="Sing in"
+        app:layout_constraintEnd_toStartOf="@+id/bInfoFragment"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/bInfoFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@id/okbutton"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/passwordLayout">
+        android:text="Info"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/bSignInFragment"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <RadioButton
-            android:id="@+id/hidePasswordRadioButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:text="Hide" />
 
-        <RadioButton
-            android:id="@+id/showPasswordRadioButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Show"/>
-    </RadioGroup>
-    <LinearLayout
-        android:id="@+id/passwordLayout"
-        android:layout_width="262dp"
-        android:layout_height="47dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@id/passwordModeRadioGroup"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <FrameLayout
+        android:id="@+id/flFragment"
+        android:layout_width="match_parent"
+        android:layout_height="650dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bSignInFragment" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="33dp"
-            android:text="Entered password:" />
-
-        <EditText
-            android:id="@+id/passwordField"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPassword"
-            android:minHeight="48dp"
-            android:text=""
-            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
-    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
