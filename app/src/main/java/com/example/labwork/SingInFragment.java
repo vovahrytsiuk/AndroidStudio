@@ -1,5 +1,6 @@
 package com.example.labwork;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,6 +13,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Toast;
+import com.example.labwork.Storage;
+import com.example.labwork.FileViewerActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -22,7 +25,8 @@ public class SingInFragment extends Fragment {
 
     private RadioGroup rgPasswordMode;
     private EditText etPasswordField;
-    private Button bVerify;
+    private Button bOk;
+    private Button bViewStorage;
 
     public SingInFragment() {
         // Required empty public constructor
@@ -73,8 +77,8 @@ public class SingInFragment extends Fragment {
                 }
             }
         });
-        bVerify = (Button) getActivity().findViewById(R.id.okbutton);
-        bVerify.setOnClickListener(new View.OnClickListener() {
+        bOk = (Button) getActivity().findViewById(R.id.okbutton);
+        bOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String password = etPasswordField.getText().toString();
@@ -86,13 +90,21 @@ public class SingInFragment extends Fragment {
                             .show();
                 }
                 else {
-                    Toast.makeText(getActivity(),
-                            "Password successfully entered",
-                            Toast.LENGTH_SHORT)
-                            .show();
+                    Storage storage = new Storage();
+                    storage.writeToFile(password, getContext());
                 }
             }
         });
+
+        bViewStorage = (Button) getActivity().findViewById(R.id.view_passwords_button);
+        bViewStorage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                openStorageViewActivity();
+            }
+        });
+
     }
 
     @Override
@@ -100,5 +112,11 @@ public class SingInFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_sing_in, container, false);
+    }
+
+    public void openStorageViewActivity()
+    {
+        Intent intent = new Intent(getContext(), FileViewerActivity.class);
+        startActivity(intent);
     }
 }
